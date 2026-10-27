@@ -18,6 +18,9 @@ const firebaseConfig = {
 
 const DOMINIO = "alunos.epbjc.pt";
 
+// 2) Directory (tenant) ID da app no Microsoft Entra ID (pedir à professora; não é um segredo)
+const TENANT_ID = "4334e4b0-48f4-4a76-ae54-cec847437a72";
+
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
@@ -36,7 +39,10 @@ function mostrarMensagem(texto, tipo = "") {
 $("btn-entrar").addEventListener("click", async () => {
   mostrarMensagem("");
   const provider = new OAuthProvider("microsoft.com");
-  provider.setCustomParameters({ prompt: "select_account" });
+  const parametros = { prompt: "select_account" };
+  // A app é single-tenant: o login tem de apontar ao tenant da escola, não ao /common
+  if (!TENANT_ID.startsWith("COLA_AQUI")) parametros.tenant = TENANT_ID;
+  provider.setCustomParameters(parametros);
   try {
     await signInWithPopup(auth, provider);
   } catch (e) {
