@@ -1,0 +1,52 @@
+:root {
+  --fundo: #eef2f6;
+  --cartao: #ffffff;
+  --texto: #1b2733;
+  --suave: #5d6b7a;
+  --azul: #14467a;
+  --azul-claro: #e3edf8;
+  --linha: #d3dbe4;
+  --erro: #a3262a;
+  --ok: #1d6b3a;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fundo: #121a22; --cartao: #1b2631; --texto: #e8eef4; --suave: #9aa9b8;
+    --azul: #7fb2e8; --azul-claro: #22364b; --linha: #2f3d4b; --erro: #f08a8d; --ok: #7fd49c;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--fundo); color: var(--texto);
+  font-family: "Segoe UI", system-ui, sans-serif; line-height: 1.5;
+}
+.topo {
+  display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between;
+  padding: 1rem 1.5rem; background: var(--cartao); border-bottom: 3px solid var(--azul);
+}
+.topo h1 { margin: 0; font-size: 1.25rem; color: var(--azul); }
+#sessao { display: flex; gap: .75rem; align-items: center; }
+main { max-width: 760px; margin: 1.5rem auto; padding: 0 1rem; display: grid; gap: 1rem; }
+.cartao { background: var(--cartao); border: 1px solid var(--linha); border-radius: 8px; padding: 1.25rem; }
+.cartao h2 { margin-top: 0; font-size: 1.1rem; }
+form { display: grid; gap: .9rem; }
+label { display: grid; gap: .3rem; font-weight: 600; font-size: .92rem; }
+input, select, textarea {
+  font: inherit; padding: .55rem .7rem; border: 1px solid var(--linha); border-radius: 6px;
+  background: var(--fundo); color: var(--texto);
+}
+button {
+  font: inherit; font-weight: 600; padding: .65rem 1.1rem; border: 0; border-radius: 6px;
+  background: var(--azul); color: #fff; cursor: pointer; justify-self: start;
+}
+@media (prefers-color-scheme: dark) { button { color: #0e1720; } }
+button.secundario { background: transparent; color: var(--azul); border: 1px solid var(--azul); padding: .4rem .8rem; }
+button:disabled { opacity: .6; cursor: wait; }
+:focus-visible { outline: 3px solid var(--azul); outline-offset: 2px; }
+#mensagem { padding: .75rem 1rem; border-radius: 6px; background: var(--azul-claro); margin: 0; }
+#mensagem.erro { color: var(--erro); border: 1px solid var(--erro); }
+#mensagem.ok { color: var(--ok); border: 1px solid var(--ok); }
+.tabela-scroll { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: .92rem; }
+th, td { text-align: left; padding: .5rem .6rem; border-bottom: 1px solid var(--linha); white-space: nowrap; }
+th { color: var(--suave); font-weight: 600; }

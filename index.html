@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Requisição de Equipamentos · EPBJC</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topo">
+    <h1>Requisição de Equipamentos</h1>
+    <div id="sessao" hidden>
+      <span id="nome-utilizador"></span>
+      <button id="btn-sair" class="secundario">Terminar sessão</button>
+    </div>
+  </header>
+
+  <main>
+    <p id="mensagem" role="status" hidden></p>
+
+    <!-- Ecrã de login -->
+    <section id="ecra-login" class="cartao">
+      <h2>Entrar</h2>
+      <p>Usa a tua conta institucional @alunos.epbjc.pt.</p>
+      <button id="btn-entrar">Entrar com Microsoft</button>
+    </section>
+
+    <!-- Área da aplicação (só visível após login autorizado) -->
+    <div id="ecra-app" hidden>
+      <section class="cartao">
+        <h2>Nova requisição</h2>
+        <form id="form-requisicao">
+          <label>Equipamento
+            <select id="equipamento" required>
+              <option value="">Escolhe…</option>
+              <option>Portátil01</option>
+              <option>Portátil02</option>
+              <option>Tablet01</option>
+              <option>Tablet02</option>
+              <option>Projetor01</option>
+            </select>
+          </label>
+          <label>Data do pedido
+            <input type="date" id="dataPedido" required />
+          </label>
+          <label>Devolução prevista
+            <input type="date" id="devolucaoPrevista" required />
+          </label>
+          <label>Observações (opcional)
+            <textarea id="observacoes" maxlength="500" rows="3"></textarea>
+          </label>
+          <button type="submit">Enviar requisição</button>
+        </form>
+      </section>
+
+      <section class="cartao">
+        <h2>Os meus pedidos</h2>
+        <p id="vazio" hidden>Ainda não fizeste nenhuma requisição.</p>
+        <div class="tabela-scroll">
+          <table id="tabela" hidden>
+            <thead>
+              <tr><th>Código</th><th>Equipamento</th><th>Pedido</th><th>Devolução</th><th>Estado</th></tr>
+            </thead>
+            <tbody id="corpo-tabela"></tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
