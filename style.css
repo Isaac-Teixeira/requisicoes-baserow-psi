@@ -16,6 +16,7 @@
   }
 }
 * { box-sizing: border-box; }
+[hidden] { display: none !important; }
 body {
   margin: 0; background: var(--fundo); color: var(--texto);
   font-family: "Segoe UI", system-ui, sans-serif; line-height: 1.5;
